@@ -16,13 +16,13 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 *   **1.1 Hydrology Basics (Page 4)**
     *   **Fundamental Equations of Gas Pipeline Flow:**
         *   **Continuity Equation:**
-            $$A \frac{\partial \rho}{\partial \tau} + \frac{\partial (\rho w A)}{\partial x} = 0$$
+            $$A \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x} (\rho w A) = 0$$
         *   **Momentum Equation:**
-            $$\frac{\partial (\rho w A)}{\partial \tau} + \frac{\partial (\rho w^2 A)}{\partial x} = -gp \frac{\partial s}{\partial x} - \frac{\lambda}{2D} \rho w^2 A$$
+            $$\frac{\partial (\rho w)}{\partial t} + \frac{\partial p}{\partial x} + \frac{\partial (\rho w^2)}{\partial x} = -g \rho \frac{ds}{dx} - \frac{\lambda}{d} \frac{w^2}{2} \rho$$
         *   **Energy Equation:**
-            $$\frac{\partial (\rho w A h)}{\partial \tau} + \frac{\partial (\rho w^2 A (h + \frac{w^2}{2}))}{\partial x} = \frac{\partial}{\partial x} \left( k A \frac{\partial T}{\partial x} \right) + \frac{\partial (\rho w A g s)}{\partial x}$$
+            $$- \frac{\partial Q}{\partial x} (\rho w A) = \frac{\partial}{\partial t} \left[ (\rho A) \left( u + \frac{w^2}{2} + gs \right) \right] + \frac{\partial}{\partial x} \left[ (\rho w A) \left( h + \frac{w^2}{2} + gs \right) \right]$$
         *   **Equation of State:**
-            $$p = p(\rho, T)$$
+            $$\rho = \rho(p, T)$$
         *   **Internal Energy Equation:**
             $$u = u(p, T)$$
         *   **Enthalpy Equation:**
@@ -46,7 +46,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 *   **1.2 Basic Flow Formulas for Gas Pipelines (Page 5)**
     *   **Steady-State Flow Formula:** "This is a formula for calculating flow rate based on the pressure at both ends of the pipeline segment, applicable only to steady-state conditions."
     *   **Horizontal Pipeline Basic Flow Formula:**
-        $$Q = 0.03848 \left[ \frac{(p_0^2 - p_z^2)d^{5}}{\Lambda Z \Delta^* T L} \right]^{0.5}$$
+        $$Q = 0.03848 \left[ \frac{(p_Q^2 - p_Z^2)d^5}{\lambda Z \Delta_\ast T L} \right]^{0.5}$$
         *   **Symbol Definitions:**
             *   `Q`: Standard volumetric flow rate, Nm³/s (oil industry term).
             *   `p₀`: Upstream pressure at the start of the pipeline segment, Pa.
@@ -60,7 +60,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 
 *   **1.3 Flow Regime Classification and Reynolds Number (Page 5)**
     *   **Reynolds Number:**
-        $$Re = 1.536 \frac{Q \Delta^*}{d \mu}$$
+        $$\text{Re} = 1.536 ^\frac{Q \Delta_\ast}{d \mu}$$
         *   `μ`: Dynamic viscosity of the gas. For natural gas, it can be taken as approximately 10⁻⁵ Pa·s.
     *   **Flow Regime Classification:** For gas flow, it can generally be divided into laminar, turbulent, and transition flow.
         *   **Laminar Flow:** `Re ≤ 2000`
@@ -80,18 +80,19 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 
 *   **1.4 TGNET's Steady-State Flow Formula (Page 6)**
     *   **TGNET Steady-State Flow Formula:**
-        $$Q_b = 38.774 \left( \frac{T_b}{P_b} \right)^{1/2} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{1/2} D^{2.5}$$
+        $$Q_b = 38.774 \left( \frac{T_b}{P_b} \right) \left[\frac{\left( P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1) \right)\dfrac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G L T_{\text{avg}} z_{\text{avg}} f}\right]^{1/2}D^{2.5}$$
+
         *   **Symbol Definitions:**
-            *   `Q_b`: Standard volumetric flow rate in mmscfd (million standard cubic feet per day).
-            *   `T_b`: Standard temperature (K).
-            *   `P_b`: Standard pressure (psia).
+            *   `Qb`: Standard volumetric flow rate in mmscfd (million standard cubic feet per day).
+            *   `Tb`: Standard temperature (K).
+            *   `Pb`: Standard pressure (psia).
             *   `P₁`: Upstream pressure (psia).
             *   `P₂`: Downstream pressure (psia).
             *   `h₁`: Upstream elevation (feet).
             *   `h₂`: Downstream elevation (feet).
             *   `f`: Moody friction factor (a function of relative roughness `e` and flow rate `Q`, dimensionless).
-            *   `Z_{avg}`: Average compressibility factor of the gas (dimensionless).
-            *   `T_{avg}`: Average temperature of the gas (K).
+            *   `Zavg`: Average compressibility factor of the gas (dimensionless).
+            *   `Tavg`: Average temperature of the gas (K).
             *   `D`: Internal diameter (inches).
             *   `L`: Length of the pipeline segment (miles).
             *   `G`: Gas specific gravity (relative to air, where air = 1.0, dimensionless).
@@ -110,7 +111,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 
 *   **Other Resistance Coefficient Formulas (Including Rough Zone) (Page 7)**
     *   **1) Weymouth Formula:**
-        $$Y = 11.19 D^{0.167} E$$
+        $$\sqrt{\frac{1}{f}} = 11.19 D^{0.167} E$$
         *   `E`: Efficiency factor. "The gas pipeline efficiency factor represents the reduction in pipeline flow rate due to factors such as internal corrosion, condensate, and local accumulation of water."
         *   **Efficiency Factor Calculation:**
             $$E = \frac{Q_{actual}}{Q_{design}}$$
@@ -120,31 +121,30 @@ This module lays the groundwork by explaining the fundamental physics and mathem
             where `f_L` is the design friction factor and `f_s` is the measured friction factor.
         *   **Setting `E` in TGNET:** The software allows setting `E` for all formulas. In pipeline design, `E` is used to maintain the original design capacity over time. Typical values: 0.9-0.96 in the US, 1 for new uncoated pipes in the former Soviet Union, and 0.95 in China.
         *   **Modified Flow Formula with Weymouth:**
-            $$Q_b = 433.49 \left( \frac{T_b}{P_b} \right)^{0.5} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{0.5} D^{2.5}$$
+            $$Q_b = 433.49 \left( \frac{T_b}{P_b} \right) \left[ \frac{ \left( P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1) \right) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}} }{G L T_{\text{avg}} z_{\text{avg}}} \right]^{0.5} D^{8/3}$$
         *   **Applicability of Weymouth Formula:**
             *   ESI's technical manual suggests it's suitable for pipe diameters around 900 mm (NPS36) and fully turbulent flow.
             *   For diameters less than 700 mm (NPS30), it tends to overestimate friction, leading to lower calculated throughputs (E > 100%).
-            *   Many Chinese textbooks suggest it was developed early (1912) with a large absolute roughness (0.0508 mm), making it suitable for small diameter, low flow rate, and less purified mine gas gathering networks.
+            *   Many textbooks suggest it was developed early (1912) with a large absolute roughness (0.0508 mm), making it suitable for small diameter, low flow rate, and less purified mine gas gathering networks.
 
 *   **2) Colebrook White Formula (Page 8)**
     *   **Colebrook White Formula:**
-        $$ \frac{1}{\sqrt{f}} = -2.0 \log \left( \frac{e}{3.7D} + \frac{2.51}{Re \sqrt{f}} \right) $$
+        $$\sqrt{\frac{1}{f}} = -2 \log \left( \frac{e}{3.7 D} + \frac{2.51}{R_e \sqrt{f}} \right)$$
         *   `e`: Equivalent pipe wall roughness.
         *   For `Re < 2000`, `f = 64/Re`.
         *   The Colebrook White formula is recommended for general use, considering various pipe wall conditions (smooth or rough) and providing good accuracy across a wide flow range, including all three turbulent zones. Other formulas may require specific conditions for similar accuracy.
         *   **Simplified Iterative Formula:**
-            $$ \frac{1}{\sqrt{f}} = 1.14 - 21 \log \left( \frac{e}{d} + \frac{21.25}{Re^{0.9}} \right) $$
+            $$\frac{1}{\sqrt{f}} = 1.14 - 2 \log \left( \frac{K_e}{d} + \frac{21.25}{R_e^{0.9}} \right)$$
             *(This simplified version has about 2% error compared to the original.)*
         *   **Modified Flow Formula with Colebrook White:**
-            $$ Q_b = 38.77 \left( \frac{T_b}{P_b} \right)^{0.5} \left[ \frac{P_1^2 - P_2^2 - 0.375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{0.5} D^{2.5} $$
-
+           $$Q_b = 38.77 \left( \frac{T_b}{P_b} \right) \left[ \frac{\left( P_1^2 - P_2^2 - 0.375 G (h_2 - h_1) \right) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G L T_{\text{avg}} z_{\text{avg}}} \right]^{0.5} \cdot 4 \log \left[ \frac{k}{3.7 D} + \frac{1.4 \sqrt{1/f}}{N_{\text{Re}}} \right] \cdot D^{2.5}$$
 *   **3) AGA Formula (Page 8)**
     *   AGA (American Gas Association) research in 1965 indicated that measured friction factors were greater than those calculated using "hydraulically smooth" or "mixed friction" laws. AGA suggests this proves that in turbulent flow at lower velocities (partially turbulent), friction factor depends only on Reynolds number, while at higher turbulent velocities (fully turbulent), it depends on pipe wall roughness.
     *   **AGA Formula for Partially Turbulent Flow:**
-        $$ \frac{1}{\sqrt{f}} = 2.0 \log \left( \frac{R}{3.7D} \right) - 0.60 $$
+        $$\frac{1}{\sqrt{f}} = 2.0 \log \left( \frac{R}{3.7D} \right) - 0.60$$
         *(Note: The formula in the text appears to be for a different parameter or has a typo. The standard AGA formula for friction factor is typically related to Reynolds number and roughness.)*
     *   **Modified Flow Formula with AGA:**
-        $$ Q_b = 38.77 \left( \frac{T_b}{P_b} \right)^{0.5} \left[ \frac{P_1^2 - P_2^2 - 0.375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{0.5} D^{2.5} $$
+        $$Q_b = 38.77 \left( \frac{T_b}{P_b} \right)^{0.5} \left[ \frac{P_1^2 - P_2^2 - 0.375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{0.5} D^{2.5}$$
 
 *   **4) Panhandle A Formula (Page 9)**
     *   Developed by Panhandle & Eastern Gas Co. It assumes pipe wall roughness is small and constant, with friction factor depending only on Reynolds number.
