@@ -46,7 +46,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 *   **1.2 Basic Flow Formulas for Gas Pipelines (Page 5)**
     *   **Steady-State Flow Formula:** "This is a formula for calculating flow rate based on the pressure at both ends of the pipeline segment, applicable only to steady-state conditions."
     *   **Horizontal Pipeline Basic Flow Formula:**
-        $$Q = 0.03848 \left[ \frac{(p_0^2 - p_z^2)d^{5}}{Z \Delta^* T L} \right]^{0.5}$$
+        $$Q = 0.03848 \left[ \frac{(p_0^2 - p_z^2)d^{5}}{\Lambda Z \Delta^* T L} \right]^{0.5}$$
         *   **Symbol Definitions:**
             *   `Q`: Standard volumetric flow rate, Nm³/s (oil industry term).
             *   `p₀`: Upstream pressure at the start of the pipeline segment, Pa.
