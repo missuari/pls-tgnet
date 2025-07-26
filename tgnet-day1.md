@@ -60,7 +60,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
 
 *   **1.3 Flow Regime Classification and Reynolds Number (Page 5)**
     *   **Reynolds Number:**
-        $$Re = 1.536 \frac{d \rho}{\mu}$$
+        $$Re = 1.536 \frac{Q \Delta^*}{d \mu}$$
         *   `μ`: Dynamic viscosity of the gas. For natural gas, it can be taken as approximately 10⁻⁵ Pa·s.
     *   **Flow Regime Classification:** For gas flow, it can generally be divided into laminar, turbulent, and transition flow.
         *   **Laminar Flow:** `Re ≤ 2000`
