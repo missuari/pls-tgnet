@@ -140,28 +140,36 @@ This module lays the groundwork by explaining the fundamental physics and mathem
            $$Q_b = 38.77 \left( \frac{T_b}{P_b} \right) \left[ \frac{\left( P_1^2 - P_2^2 - 0.375 G (h_2 - h_1) \right) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G L T_{\text{avg}} z_{\text{avg}}} \right]^{0.5} \cdot 4 \log \left[ \frac{k}{3.7 D} + \frac{1.4 \sqrt{1/f}}{N_{\text{Re}}} \right] \cdot D^{2.5}$$
 *   **3) AGA Formula (Page 8)**
     *   AGA (American Gas Association) research in 1965 indicated that measured friction factors were greater than those calculated using "hydraulically smooth" or "mixed friction" laws. AGA suggests this proves that in turbulent flow at lower velocities (partially turbulent), friction factor depends only on Reynolds number, while at higher turbulent velocities (fully turbulent), it depends on pipe wall roughness.
-    *   **AGA Formula for Partially Turbulent Flow:**
-        $$\frac{1}{\sqrt{f}} = 2.0 \log \left( \frac{R}{3.7D} \right) - 0.60$$
-        *(Note: The formula in the text appears to be for a different parameter or has a typo. The standard AGA formula for friction factor is typically related to Reynolds number and roughness.)*
+    *   **AGA Formula for Turbulent Flow:**
+        $$\sqrt{\frac{1}{f}} = 2 \times \log \left( \frac{3.7 \times D}{e} \right)$$
     *   **Modified Flow Formula with AGA:**
-        $$Q_b = 38.77 \left( \frac{T_b}{P_b} \right)^{0.5} \left[ \frac{P_1^2 - P_2^2 - 0.375 G (h_2 - h_1)}{G L T_{avg} Z_{avg} f} \right]^{0.5} D^{2.5}$$
-
+        $$Q_b = 38.77 \frac{T_b}{P_b} \left[ \frac{P_1^2 - P_2^2 - 0.375 G (h_2 - h_1) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G L T_{\text{avg}} z_{\text{avg}}} \right]^{0.5} \times \left[ 4 \log \left( \frac{3.7 D}{e} \right) \right] \times D^{2.5}$$
+    *   At this point, the AGA formula assumes that the friction coefficient is independent of the Reynolds number.
 *   **4) Panhandle A Formula (Page 9)**
     *   Developed by Panhandle & Eastern Gas Co. It assumes pipe wall roughness is small and constant, with friction factor depending only on Reynolds number.
     *   **Accuracy:** High precision for pipe diameters from 150 mm (NPS6) to 600 mm (NPS24) and Reynolds numbers from 5,000,000 to 14,000,000. For Reynolds numbers above 300,000 (partially turbulent), predictions may be optimistic.
     *   **Panhandle A Friction Factor Formula:**
-        $$ \frac{1}{\sqrt{\lambda}} = 3.436 * Re^{0.0730} E $$
-        *   `E`: Efficiency factor, dependent on pipe diameter (table provided).
+        $$\frac{1}{\sqrt{\lambda}} = 3.436 Re^{0.0730} E$$
+        *   `E`: Efficiency factor, dependent on pipe diameter.
     *   **Modified Flow Formula with Panhandle A:**
-        $$ Q_b = 435.87 \left( \frac{T_b}{P_b} \right)^{1.0788} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1)}{G^{0.8539} L T_{avg} Z_{avg}} \right]^{0.5394} D^{2.6182} $$
+        $${Q_b = 435.87 \left( \frac{T_b}{P_b} \right)^{1.0788} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G^{0.8539} L T_{\text{avg}} z_{\text{avg}}} \right]^{0.5394} D^{2.6182}}$$
+        *   Table: Values of \( E \)
+
+| Pipe Diameter (inches) | Pipe Diameter (cm) | \( E \) |
+|-------------------------|--------------------|--------|
+| 30                      | 76                 | 0.95   |
+| 28–26                   | 71–66              | 0.94   |
+| 24, 22, 20              | 61, 56, 51         | 0.92   |
+| 18, 16, 14              | 46, 41, 35         | 0.90   |
+ 
 
 *   **5) Panhandle B Formula (Page 10)**
     *   Similar to Panhandle A, but with less dependence on Reynolds number.
     *   **Panhandle B Friction Factor Formula:**
-        $$ \frac{1}{\sqrt{\lambda}} = 8.245 * Re^{0.01961} E $$
+        $$\frac{1}{\sqrt{\lambda}} = 8.245 Re^{0.01961} E$$
         *   `E`: Recommended value of 0.90 for Panhandle B. Suitable for long-distance natural gas pipelines with diameters greater than 600 mm (NPS24).
     *   **Modified Flow Formula with Panhandle B:**
-        $$ Q_b = 737 \left( \frac{T_b}{P_b} \right)^{1.020} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1)}{G^{0.961} L T_{avg} Z_{avg}} \right]^{0.516} D^{2.530} $$
+        $$Q_b = 737 \left( \frac{T_b}{P_b} \right)^{1.020} \left[ \frac{P_1^2 - P_2^2 - 0.0375 G (h_2 - h_1) \frac{P_{\text{avg}}^2}{z_{\text{avg}} T_{\text{avg}}}}{G^{0.861} L T_{\text{avg}} z_{\text{avg}}} \right]^{0.516} D^{2.530}$$
 
 *   **Gas State Equations (Page 10-11)**
     *   **1. Ideal Gas State Equation:** `P = ρRT`
@@ -169,7 +177,6 @@ This module lays the groundwork by explaining the fundamental physics and mathem
     *   **3. Van der Waals State Equation:** `P = RT/(V-b) - a/V²`
         *   `b`: Correction for molecular volume.
         *   `a`: Correction for intermolecular forces.
-    *   **Z-factor Calculation:** A summation formula is presented for calculating `Z`.
     *   **1. Sarem (Page 11):** An empirical equation that addresses compressibility factor calculation for typical gas pipelines. It uses reduced pressure and temperature concepts and Legendre polynomials.
         *   **Advantages:** High accuracy within normal operating ranges for most natural gas systems, requires fewer gas parameters (relative density, heating value, CO₂ content), allows user-defined properties, assumes ideal gas for specific heat.
         *   **Disadvantages:** Inaccurate at low pressures and near phase transitions.
