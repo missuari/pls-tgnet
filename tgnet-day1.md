@@ -204,7 +204,7 @@ This module lays the groundwork by explaining the fundamental physics and mathem
     *   **Overall Heat Transfer Coefficient (Page 14):**
         *   Can be looked up in a manual or calculated using formulas for bare pipes.
         *   Formula for `U`:
-            $$ \frac{1}{U} = \frac{1}{R_{env}} + R_{k_{env}} \ln \left( \frac{R_o}{R_i} \right) + \frac{1}{R_{k_{steel}}} $$
+            $${\frac{1}{U} = \frac{R_i}{R_o} \times \left[ \frac{1}{k_{\text{env}}} + R_o \times \ln \left( \frac{R_o}{R_i} \right) \frac{1}{k_{\text{steel}}} \right]}$$
         *   **Symbol Definitions:** `U` (overall heat transfer coefficient, BTU/hr·ft²·°F), `R₀` (outer pipe radius, feet), `Rᵢ` (inner pipe radius, feet), `k_steel` (thermal conductivity of steel, BTU/hr·ft²·°F), `k_env` (environmental heat transfer coefficient, BTU/hr·ft²·°F).
     *   **Detailed Heat Transfer Calculation (Page 14):**
         *   When both temperature and wall temperature tracking are enabled, PLS requires input for heat transfer data, not just the overall coefficient.
