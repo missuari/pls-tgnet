@@ -1,4 +1,3 @@
-Here is the detailed content for Day 1 of the training plan, presented in Markdown format, covering the exact information from the document references.
 
 
 ---
