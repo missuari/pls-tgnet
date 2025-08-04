@@ -12,7 +12,7 @@
 
 This module builds upon Day 1 by delving into the selection of critical simulation parameters and the detailed setup required before running a steady-state analysis.
 
-*   **3.4 Selecting Friction Formulas and Knot Space (Page 27)**
+*   **3.4 Selecting Friction Formulas and Knot Space**
     *   **Friction Formulas:**
         *   **Colebrook White:** Described as "a very good friction formula, suitable for various flow conditions."
         *   **Weymouth:** Stated as "only suitable for low-pressure systems."
@@ -20,12 +20,12 @@ This module builds upon Day 1 by delving into the selection of critical simulati
     *   **Knot Space:**
         *   **Impact on Simulation:** "For smaller models or higher accuracy requirements, a smaller Knot space can be used. For very large models, a larger Knot space is needed. A smaller Knot space requires longer calculation time, and using too small a Knot space in a large model can lead to simulation failure."
 
-*   **3.5 Selecting Gas State Equations (Page 28)**
+*   **3.5 Selecting Gas State Equations**
     *   **Guidance on Selection:**
         *   "When the gas composition is known, use Peng-Robinson or BWRS state equations. Otherwise, use the SAREM equation."
         *   "If the gas contains many non-hydrocarbon components or a high C2+ content, the BWRS state equation should be used."
         *   **Calculation Speed:** "SAREM equation provides the fastest calculation, while BWRS is the slowest."
-    *   **Simulation Options - Fluid Tab (Page 27-28):**
+    *   **Simulation Options - Fluid Tab**
         *   **Equation of State:** A dropdown list allows selection of Sarem, BWRS, or Peng.
         *   **Sarem Description:** "Suitable for calculating the compressibility factor when gas composition is unknown. It is an empirical formula for typical gas pipelines and is not suitable for very low pressures or gases with high non-hydrocarbon content."
         *   **BWRS and Peng Description:** "Used when gas composition is known and have a wide range of applicability."
@@ -44,20 +44,20 @@ This module builds upon Day 1 by delving into the selection of critical simulati
 
 This module covers the process of building a detailed network model, inputting various parameters, and performing steady-state simulations.
 
-*   **4.1 Inputting Gas Parameters (Page 33)**
+*   **4.1 Inputting Gas Parameters**
     *   **Two Input Methods:**
         *   **Simplified Fluid:** Accessed via `Insert > Simplified fluid`. This method requires inputting the main gas properties: relative density, heating value, and CO₂ content. It's described as a simplified gas model that must be used with the Sarem state equation (as mentioned in Section 2.3) and is suitable for typical gas pipelines.
         *   **Compositional Fluid:** Accessed via `Insert > Compositional Fluid`. This method involves inputting the mole percentage of each gas component. A check is provided to ensure the sum of mole percentages equals 100%. This component-based gas model requires the use of BWRS or Peng state equations (Section 2.3). The software automatically calculates the gas's physical properties, offering a broader range of applicability.
     *   **Handling Multiple Gas Streams:** The software permits the input of multiple gas streams. Each stream is automatically named, allowing for later reference when specifying different gas sources.
 
-*   **4.2 Building the Network Model (Page 35-36)**
-    *   **4.2.1 Drawing the Network Model Structure (Page 35)**
+*   **4.2 Building the Network Model**
+    *   **4.2.1 Drawing the Network Model Structure**
         *   **Using Drawing Tools:** Users select buttons from the Drawing Toolbar to place pipeline components such as pipes, nodes, and equipment.
         *   **Placement Process:** Clicking a button places a component. Clicking the same button again will draw another identical component. Clicking the button or the arrow button again exits the drawing mode and returns to the selection tool.
         *   **Component Movement:** Selected components can be moved individually or as a group.
         *   **Connectivity Rules:** Pipes can be connected in parallel, but pipes cannot be connected in parallel with other component types like valves.
         *   **Replication Strategy:** For sections of the network that are similar, it's efficient to build one and then use the copy function (holding `Ctrl` and `Shift` while dragging) to replicate it.
-    *   **4.2.2 Inputting Network Component Parameters (Page 35-36)**
+    *   **4.2.2 Inputting Network Component Parameters**
         *   **Four Methods for Inputting Parameters:**
             1.  **Component Dialog Box:** Double-clicking any network component opens a dialog box for parameter input.
                 *   **Advantages:** Intuitive and less prone to errors.
@@ -69,9 +69,9 @@ This module covers the process of building a detailed network model, inputting v
             3.  **Property View:** Click the `Property view` button on the Standard Toolbar or select it from the `View` menu. This opens a window that displays all properties of the selected component.
                 *   **Advantages:** Allows simultaneous viewing of the network diagram and component properties, making it ideal for checking input data and calculation results.
                 *   **Tabs:** Three tabs display all data, output data (calculation results), or input data, facilitating efficient review and input.
-            4.  **Format Painter (Page 36):** Located next to the "Push Pin" button on the Standard Toolbar, this tool allows copying data from a source component to target components of the same type. It's particularly useful for components with identical parameters. Note that some data, such as pipe length, cannot be transferred using the Format Painter. The "Push Pin" feature enables repeated use of the Format Painter without re-selecting it.
+            4.  **Format Painter** Located next to the "Push Pin" button on the Standard Toolbar, this tool allows copying data from a source component to target components of the same type. It's particularly useful for components with identical parameters. Note that some data, such as pipe length, cannot be transferred using the Format Painter. The "Push Pin" feature enables repeated use of the Format Painter without re-selecting it.
 
-*   **4.3 Network Model Validation (Page 36)**
+*   **4.3 Network Model Validation**
     *   **Purpose:** To ensure the integrity of the network model, especially after initial creation or significant modifications.
     *   **Process:** Click the `Validate Network` button on the Simulation Toolbar or select it from the `Simulation` menu.
     *   **Checks Performed:** The validation process checks for:
@@ -80,7 +80,7 @@ This module covers the process of building a detailed network model, inputting v
         *   Validity of the entered input data.
     *   **Error Reporting:** Errors are categorized as "Warnings" (non-critical, should be corrected) and "Errors" (critical, must be corrected before simulation). Some errors have a "Fix" button to directly access the relevant input dialog.
 
-*   **4.4 Running Steady-State Simulation and Viewing Results (Page 37)**
+*   **4.4 Running Steady-State Simulation and Viewing Results**
     *   **Initiating Simulation:** Click the `Steady-State` button on the Simulation Toolbar or menu. The software first checks if validation has been performed. If validation passed, it proceeds directly to calculation. If not, it performs validation first.
     *   **Convergence:** During calculation, a convergence curve is displayed. If all curves (e.g., iteration error) fall within the convergence tolerance, the results are considered reliable.
     *   **Troubleshooting Convergence Issues:** Common causes for non-convergence include: low starting pressure, high flow rates, or undersized pipes.
@@ -91,7 +91,7 @@ This module covers the process of building a detailed network model, inputting v
         *   **Steady-State Report:** A comprehensive report containing all calculation results, network statistics, iteration records, and mass balance errors is available via `View > Output > Steady-State Report`.
         *   **Chart View:** Pressure, flow, temperature, and elevation profiles along the pipeline can be generated using the Chart Toolbar or `Chart` menu. For example, selecting pipeline segments and clicking `Pressure Profile` displays a pressure drop curve with a corresponding data table showing mileage points and pressures.
 
-*   **Hands-on Exercise 2: Lab2 (Page 38)**
+*   **Hands-on Exercise 2: Lab2**
     *   **Objective:** To build a model based on the provided diagram and perform simulations to analyze the impact of various parameters.
     *   **Model Setup:**
         *   **Node N00001:** Temp 50 Deg C, Mode (Init) Max Pressure, Pres Max 4 MPAG.
