@@ -141,4 +141,3 @@ This training plan is designed to provide a comprehensive understanding of gas p
 
 ---
 
-**Note:** This plan is a guideline. The pace can be adjusted based on the participants' prior knowledge and the depth of discussion desired for each topic. Hands-on exercises are crucial for reinforcing learning.
