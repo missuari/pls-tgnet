@@ -2,7 +2,7 @@
 
 ---
 
-## 3-Day Training Plan: Gas Pipeline Simulation with TGNET/Pipeline Studio
+## Gas Pipeline Simulation with TGNET/Pipeline Studio
 
 This training plan is designed to provide a comprehensive understanding of gas pipeline simulation using the TGNET/Pipeline Studio software, covering theoretical concepts, software operation, and practical application through case studies.
 
