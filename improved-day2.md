@@ -291,7 +291,7 @@ $$E = \frac{Q_{actual}}{Q_{theoretical}} = \sqrt{\frac{f_{design}}{f_{actual}}}$
 
 ---
 
-### **End of Day 2 Assessment**
+### **Day 2 Checklists**
 
 #### **Skills Checkpoint:**
 ✅ Can build complex network models  
@@ -307,7 +307,5 @@ $$E = \frac{Q_{actual}}{Q_{theoretical}} = \sqrt{\frac{f_{design}}{f_{actual}}}$
 2. How does temperature tracking affect capacity calculations?
 3. What are the main causes of non-convergence?
 4. How do elevation changes impact pipeline hydraulics?
-
-**Homework:** Review PDF Module Capacity, Case Study 2 (pages 20-28) for Day 3 transient analysis preparation.
 
 ---
