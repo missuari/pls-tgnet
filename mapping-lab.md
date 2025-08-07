@@ -1,7 +1,7 @@
-# Core Material to PDF Handout Mapping Summary
+# Material Handout Mapping
 
 ## Overview
-This document provides a comprehensive mapping between the 3-day core training materials (Day 1-3 markdown files) and the supplementary PDF handout modules.
+This document provides a comprehensive mapping between training materials and the supplementary PDF handout modules.
 
 ## Day 1: Fundamentals of Gas Pipeline Simulation
 
