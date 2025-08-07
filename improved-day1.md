@@ -1,11 +1,11 @@
----
+
 
 ## Day 1: Fundamentals of Gas Pipeline Simulation & Software Introduction
 
 **Objective:** To introduce the basic principles of gas pipeline flow, the software's capabilities, and the initial steps for setting up a simulation project.
 
-**Recommended Starting Exercise:** 
-> 📖 **Begin with PDF Module Tuning, Case Study 1 (pages 1-10)** - This provides a hands-on introduction to creating a simple A-B pipeline configuration that reinforces the theoretical concepts covered below.
+**Starting Exercise:** 
+> 📖 **Case Study 1 (pages 1-10)** - Hands-on introduction to creating a simple A-B pipeline configuration that reinforces the theoretical concepts covered below.
 
 ---
 
@@ -281,7 +281,7 @@ $$\frac{1}{U} = \frac{R_i}{R_o} \times \left[ \frac{1}{k_{env}} + R_o \times \ln
 
 ---
 
-### **End of Day 1 Checklist**
+### **Day 1 Checklist**
 
 ✅ Understand fundamental flow equations  
 ✅ Know flow regime classifications  
@@ -290,7 +290,5 @@ $$\frac{1}{U} = \frac{R_i}{R_o} \times \left[ \frac{1}{k_{env}} + R_o \times \ln
 ✅ Familiar with software interface  
 ✅ Created and ran first model  
 ✅ Understand temperature tracking basics  
-
-**Homework:** Review PDF Module Thermal Effects (pages 1-11) for Day 2 preparation.
 
 ---
