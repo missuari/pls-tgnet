@@ -1,5 +1,3 @@
----
-
 ## Day 2: Steady-State Simulation and Model Building
 
 **Objective:** To master the process of building detailed network models, performing steady-state simulations, and analyzing pipeline capacity.
