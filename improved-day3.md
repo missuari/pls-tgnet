@@ -1,5 +1,3 @@
----
-
 ## Day 3: Dynamic Simulation, Case Studies & Advanced Analysis
 
 **Objective:** To master dynamic (transient) simulations, understand time-dependent behavior, and apply advanced analysis techniques to real-world scenarios.
@@ -359,7 +357,7 @@ $$t_{arrival} = \frac{L}{v_{front}} = \frac{\pi D^2 L}{4Q}$$
 
 ---
 
-### **End of Day 3 Assessment**
+### **Day 3 Checklist**
 
 #### **Competency Checklist:**
 ✅ Can create and run transient scenarios  
@@ -383,21 +381,5 @@ Create a transient scenario that includes:
 - All minimum pressures maintained
 - Proper trend configuration
 - Complete documentation
-
----
-
-### **Preparation for Day 4**
-
-**Advanced Topics Preview:**
-- Network optimization
-- Multi-scenario analysis
-- Real-time simulation
-- SCADA integration
-- Advanced troubleshooting
-
-**Recommended Reading:**
-- Review all PDF module exercises
-- Focus on modules not yet completed
-- Prepare questions for advanced topics
 
 ---
